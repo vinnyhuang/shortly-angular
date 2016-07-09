@@ -1,6 +1,9 @@
 <div id='links'>
-  <!-- Your html here -->
-  <div ng-repeat="link in data.links track by $index" class="link">
+
+  <input ng-model="query">
+
+
+  <div ng-repeat="link in data.links | orderBy:'-visits' | filter:search" class="link">
     <img src='../redirect_icon.png'/>
     <div class='info'>
       <div class='visits'><span class='count'>{{link.visits}}</span>Visits</div>
