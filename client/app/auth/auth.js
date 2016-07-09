@@ -4,7 +4,7 @@
 angular.module('shortly.auth', [])
 
 .controller('AuthController', function ($scope, $window, $location, Auth) {
-  $scope.user = {};
+  $scope.user = { username: '', password: '' };
 
   $scope.signin = function () {
     Auth.signin($scope.user)
@@ -26,5 +26,15 @@ angular.module('shortly.auth', [])
       .catch(function (error) {
         console.error(error);
       });
+  };
+
+  $scope.isValid = function() {
+    if (!!$scope.signinForm.$error.maxlength) {
+      return 'Username or password too long (Max 24)';
+    } else if (!$scope.user.username || !$scope.user.password) {
+      return 'Username and password required';
+    } else {
+      return '';
+    }
   };
 });

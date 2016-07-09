@@ -1,9 +1,10 @@
 <div id='shorten'>
 <!-- Your code here -->
   <form>
-    <input ng-model="longLink"/>
-    <button ng-click="addLink(longLink)">Shorten link</button>
+    <input ng-model="longLink" ng-pattern="rValidUrl" />
+    <button ng-click="addLink()">Shorten link</button>
   </form>
+  <p>{{ isValid() }}</p>
 
 </div>
 
